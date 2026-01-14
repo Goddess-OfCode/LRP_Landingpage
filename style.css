@@ -191,7 +191,7 @@ img{ max-width:100%; display:block; }
   display:grid;
   grid-template-columns: 1.1fr .9fr;
   gap: 34px;
-  align-items: center;
+  align-items: start;
   padding: 28px 0 26px;
 }
 .eyebrow{
@@ -226,6 +226,9 @@ img{ max-width:100%; display:block; }
   flex-wrap: wrap;
   margin: 14px 0 18px;
 }
+.hero__content .videoCard{
+  margin-top: 18px;
+}
 
 .trustRow{
   display:grid;
@@ -254,9 +257,9 @@ img{ max-width:100%; display:block; }
 .trustTitle{ font-weight: 850; }
 .trustSub{ font-size: .88rem; color: rgba(0,0,0,.62); margin-top: 2px; }
 
-/* Before/After Card */
+/* Video Card */
 .hero__media{ display:flex; justify-content:flex-end; }
-.baCard{
+.videoCard{
   width: 100%;
   max-width: 470px;
   border-radius: calc(var(--radius) + 8px);
@@ -265,96 +268,26 @@ img{ max-width:100%; display:block; }
   box-shadow: var(--shadow);
   overflow:hidden;
 }
-.baCard__header{
+.videoCard__header{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding: 16px 18px;
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
-.baCard__title{ font-weight: 900; letter-spacing:-.01em; }
-.baCard__hint{ color: rgba(0,0,0,.62); font-weight: 650; font-size: .92rem; }
-
-.beforeAfter{
-  position: relative;
-  height: 310px;
+.videoCard__title{ font-weight: 900; letter-spacing:-.01em; }
+.videoCard__hint{ color: rgba(0,0,0,.62); font-weight: 650; font-size: .92rem; }
+.videoCard__mediaWrap{
+  padding: 16px 18px 0;
+}
+.videoCard__media{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
   background: var(--gray-200);
-  overflow:hidden;
+  display:block;
 }
-.beforeAfter__after,
-.beforeAfter__before{
-  position:absolute;
-  inset:0;
-  background-size: cover;
-  background-position:center;
-}
-.beforeAfter__after{
-  /* NEW ROOF (AFTER) */
-    background-image: url("images/After.jpeg");
-  filter: contrast(1.05) saturate(1.05);
-}
-.beforeAfter__before{
-  /* OLD ROOF (BEFORE) */
-  background-image: url("images/Before.jpeg");
-  width: 45%;
-  border-right: 2px solid rgba(255,255,255,.55);
-  filter: contrast(1.05) saturate(.9) grayscale(.1);
-}
-.beforeAfter__labels{
-  position:absolute;
-  inset: 14px 14px auto 14px;
-  display:flex;
-  justify-content:space-between;
-  pointer-events:none;
-}
-.label{
-  font-size:.74rem;
-  font-weight: 900;
-  letter-spacing:.08em;
-  padding: 8px 10px;
-  border-radius: 999px;
-}
-.label--before{
-  background: rgba(0,0,0,.62);
-  color: var(--white);
-}
-.label--after{
-  background: rgba(209,15,26,.85);
-  color: var(--white);
-}
-.beforeAfter__slider{
-  position:absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 16px;
-  width: calc(100% - 28px);
-  appearance:none;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.85);
-  outline:none;
-}
-.beforeAfter__slider::-webkit-slider-thumb{
-  appearance:none;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--red);
-  border: 3px solid rgba(255,255,255,.95);
-  box-shadow: 0 10px 20px rgba(0,0,0,.18);
-}
-.beforeAfter__handle{
-  position:absolute;
-  top:0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(255,255,255,.75);
-  left: 45%;
-  pointer-events:none;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.08);
-}
-
-.baCard__footer{
+.videoCard__footer{
   padding: 16px 18px 18px;
 }
 .miniStats{

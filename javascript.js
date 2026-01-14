@@ -6,6 +6,14 @@ function setYear() {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
+const preferredDateInput = document.getElementById("preferredDate");
+const preferredTimeInput = document.getElementById("preferredTime");
+const timezoneInput = document.getElementById("timezone");
+
+if (preferredDateInput) {
+  preferredDateInput.min = new Date().toISOString().split("T")[0];
+}
+
  // Form Submission
     document.getElementById("quoteForm").addEventListener("submit", async function (e) {
       const statusEl = document.getElementById("formStatus");
@@ -18,7 +26,30 @@ function setYear() {
         return;
       }
 
+      if (!this.checkValidity()) {
+        e.preventDefault();
+        this.reportValidity();
+        return;
+      }
+
+      if (preferredDateInput && preferredTimeInput) {
+        const selectedDate = preferredDateInput.value;
+        const selectedTime = preferredTimeInput.value;
+        const selectedDateTime = new Date(`${selectedDate}T${selectedTime}`);
+
+        if (Number.isNaN(selectedDateTime.getTime()) || selectedDateTime.getTime() < Date.now()) {
+          e.preventDefault();
+          statusEl.className = "formStatus formStatus--bad";
+          statusEl.textContent = "Please choose a future date and time.";
+          return;
+        }
+      }
+
       e.preventDefault();
+
+      if (timezoneInput) {
+        timezoneInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone || "Local";
+      }
 
       const formData = Object.fromEntries(new FormData(this).entries());
       statusEl.className = "formStatus";
@@ -116,25 +147,6 @@ function initMobileMenu() {
   });
 }
 
-// Before/After slider
-function initBeforeAfter() {
-  const slider = $("#baSlider");
-  const beforeLayer = $("#beforeLayer");
-  const handle = $("#baHandle");
-
-  if (!slider || !beforeLayer || !handle) return;
-
-  const update = (val) => {
-    const pct = Math.max(0, Math.min(100, Number(val)));
-    beforeLayer.style.width = pct + "%";
-    handle.style.left = pct + "%";
-  };
-
-  slider.addEventListener("input", (e) => update(e.target.value));
-  update(slider.value);
-}
-
 // Init
 setYear();
 initMobileMenu();
-initBeforeAfter();
