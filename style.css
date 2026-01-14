@@ -598,6 +598,9 @@ textarea{ resize: vertical; }
   color: rgba(0,0,0,.58);
   font-size: .86rem;
 }
+#consent{
+  font-size: 8pt;
+}
 .formStatus{
   margin-top: 12px;
   padding: 12px 12px;
