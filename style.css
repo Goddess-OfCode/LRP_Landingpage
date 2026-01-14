@@ -290,12 +290,12 @@ img{ max-width:100%; display:block; }
 }
 .beforeAfter__after{
   /* NEW ROOF (AFTER) */
-    background-image: url("../images/After.jpeg");
+    background-image: url("images/After.jpeg");
   filter: contrast(1.05) saturate(1.05);
 }
 .beforeAfter__before{
   /* OLD ROOF (BEFORE) */
-  background-image: url("../images/Before.jpeg");
+  background-image: url("images/Before.jpeg");
   width: 45%;
   border-right: 2px solid rgba(255,255,255,.55);
   filter: contrast(1.05) saturate(.9) grayscale(.1);
