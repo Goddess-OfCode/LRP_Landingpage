@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Liberty Roofing Professionals in Columbus, GA. Roof repairs, replacements, inspections. Get a fast, free estimate." />
+  <title>Liberty Roofing Professionals | Columbus, GA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top announcement bar -->
+  <div class="topbar" role="note" aria-label="Promotional message">
+    <div class="container topbar__inner">
+      <span class="topbar__badge">Columbus, GA</span>
+      <span class="topbar__text">Same-week inspections • Insurance claim help • Financing options</span>
+      <a class="topbar__link" href="#lead-form">Get a Free Estimate</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="Liberty Roofing Professionals">
+        <span class="brand__mark" aria-hidden="true">LR</span>
+        <span class="brand__text">
+          <span class="brand__name">Liberty Roofing Professionals</span>
+          <span class="brand__sub">Columbus, Georgia</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#lead-form" class="btn btn--small btn--outline">Free Estimate</a>
+        <a href="tel:+17065551234" class="btn btn--small btn--solid" aria-label="Call Liberty Roofing Professionals">
+          Call (706) 555-1234
+        </a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <div class="container mobile-menu__inner">
+        <a href="#services" class="mobile-link">Services</a>
+        <a href="#why-us" class="mobile-link">Why Us</a>
+        <a href="#reviews" class="mobile-link">Reviews</a>
+        <a href="#lead-form" class="btn btn--solid w-full">Get a Free Estimate</a>
+        <a href="tel:+17065551234" class="btn btn--outline w-full">Call (706) 555-1234</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow">Trusted Roofing in Columbus, GA</p>
+          <h1 class="hero__title">
+            Upgrade Your Roof.
+            <span class="hero__titleAccent">Protect Your Home.</span>
+          </h1>
+          <p class="hero__subtitle">
+            Fast inspections, expert installs, and clean job sites. From storm damage to full replacements,
+            Liberty Roofing Professionals delivers premium results without the premium headache.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--solid btn--lg" href="#lead-form">Get My Free Estimate</a>
+            <a class="btn btn--outline btn--lg" href="tel:+17065551234">Call Now</a>
+          </div>
+
+          <div class="trustRow" aria-label="Company trust highlights">
+            <div class="trustItem">
+              <span class="trustIcon" aria-hidden="true">★</span>
+              <div>
+                <div class="trustTitle">Top-Rated</div>
+                <div class="trustSub">Local reputation you can verify</div>
+              </div>
+            </div>
+            <div class="trustItem">
+              <span class="trustIcon" aria-hidden="true">🛡</span>
+              <div>
+                <div class="trustTitle">Licensed & Insured</div>
+                <div class="trustSub">Professional crews, protected work</div>
+              </div>
+            </div>
+            <div class="trustItem">
+              <span class="trustIcon" aria-hidden="true">⏱</span>
+              <div>
+                <div class="trustTitle">Quick Turnaround</div>
+                <div class="trustSub">Same-week inspections available</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Before/After showcase -->
+        <div class="hero__media" aria-label="Roof transformation showcase">
+          <div class="baCard">
+            <div class="baCard__header">
+              <div class="baCard__title">Old Roof → New Roof</div>
+              <div class="baCard__hint">Drag the slider</div>
+            </div>
+
+            <div class="beforeAfter" id="beforeAfter">
+              <!-- Background image = After (new roof), overlay = Before (old roof) -->
+              <div class="beforeAfter__after" role="img" aria-label="New roof example"></div>
+              <div class="beforeAfter__before" id="beforeLayer" role="img" aria-label="Old roof example"></div>
+
+              <div class="beforeAfter__labels">
+                <span class="label label--before">BEFORE</span>
+                <span class="label label--after">AFTER</span>
+              </div>
+
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value="45"
+                class="beforeAfter__slider"
+                id="baSlider"
+                aria-label="Before after slider"
+              />
+              <div class="beforeAfter__handle" id="baHandle" aria-hidden="true"></div>
+            </div>
+
+            <div class="baCard__footer">
+              <div class="miniStats">
+                <div class="miniStat">
+                  <div class="miniStat__num">10+</div>
+                  <div class="miniStat__label">Years Serving GA</div>
+                </div>
+                <div class="miniStat">
+                  <div class="miniStat__num">5,000+</div>
+                  <div class="miniStat__label">Roofs Completed</div>
+                </div>
+                <div class="miniStat">
+                  <div class="miniStat__num">A+</div>
+                  <div class="miniStat__label">Customer Care</div>
+                </div>
+              </div>
+              <p class="finePrint">
+                Results vary by roof condition and material. Ask about warranties and financing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-hero strip -->
+      <div class="heroStrip">
+        <div class="container heroStrip__inner">
+          <div class="stripItem"><span class="dot"></span> Free Roof Inspections</div>
+          <div class="stripItem"><span class="dot"></span> Storm Damage Specialists</div>
+          <div class="stripItem"><span class="dot"></span> Insurance Claim Support</div>
+          <div class="stripItem"><span class="dot"></span> Financing Available</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Roofing Services Built for Georgia Weather</h2>
+          <p>Repair, replace, or reinforce. We handle the tough stuff, so you can sleep through the next storm.</p>
+        </div>
+
+        <div class="cardsGrid">
+          <article class="card">
+            <h3>Roof Replacement</h3>
+            <p>High-performance shingles, metal roofing, and premium installs with clean, sharp finishes.</p>
+            <ul class="checklist">
+              <li>Material guidance</li>
+              <li>Ventilation & decking checks</li>
+              <li>Warranty options</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Roof Repairs</h3>
+            <p>Leaks, missing shingles, flashing failures. We diagnose fast and fix it right.</p>
+            <ul class="checklist">
+              <li>Leak tracing</li>
+              <li>Flashing & pipe boots</li>
+              <li>Emergency tarping</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Storm Damage</h3>
+            <p>Wind and hail can be sneaky. We document damage and help you navigate insurance.</p>
+            <ul class="checklist">
+              <li>Photo documentation</li>
+              <li>Claim assistance</li>
+              <li>Rapid inspections</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Roof Inspections</h3>
+            <p>Buying, selling, or just unsure. Get a clear, honest assessment with next steps.</p>
+            <ul class="checklist">
+              <li>Detailed report</li>
+              <li>Maintenance plan</li>
+              <li>Transparent pricing</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="section section--dark" id="why-us">
+      <div class="container">
+        <div class="sectionHead sectionHead--dark">
+          <h2>Premium Work. No Nonsense.</h2>
+          <p>Quality is a system: experienced crews, proven materials, and communication that doesn’t vanish after you sign.</p>
+        </div>
+
+        <div class="featuresGrid">
+          <div class="feature">
+            <div class="feature__icon" aria-hidden="true">🏗</div>
+            <h3>Pro Crews</h3>
+            <p>Trained teams with tight process control and job-site respect.</p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon" aria-hidden="true">🧾</div>
+            <h3>Clear Estimates</h3>
+            <p>No mystery numbers. You get line-item clarity and options.</p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon" aria-hidden="true">🧲</div>
+            <h3>Clean Finish</h3>
+            <p>Magnetic nail sweep, tidy landscaping, and a final walkthrough.</p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon" aria-hidden="true">🛠</div>
+            <h3>Strong Warranty</h3>
+            <p>Ask about material + workmanship coverage tailored to your roof.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Homeowners Talk. We Listen.</h2>
+          <p>Swap these placeholders with real reviews when you’re ready to deploy.</p>
+        </div>
+
+        <div class="reviewsGrid">
+          <figure class="review">
+            <blockquote>
+              “They showed up when they said they would, explained everything, and the roof looks incredible.”
+            </blockquote>
+            <figcaption>Jordan M. • Columbus, GA</figcaption>
+          </figure>
+
+          <figure class="review">
+            <blockquote>
+              “Storm damage claim was stressful. Liberty handled the documentation and kept it simple.”
+            </blockquote>
+            <figcaption>Alex R. • Midland, GA</figcaption>
+          </figure>
+
+          <figure class="review">
+            <blockquote>
+              “Clean job site, fast turnaround, and the crew was professional from start to finish.”
+            </blockquote>
+            <figcaption>Sam T. • Fortson, GA</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead Form -->
+    <section class="section section--form" id="lead-form">
+      <div class="container formGrid">
+        <div class="formPitch">
+          <h2>Get a Fast, Free Roof Estimate</h2>
+          <p>
+            Tell us what’s going on and we’ll reach out quickly to schedule an inspection.
+            If it’s urgent, call and we’ll prioritize you.
+          </p>
+
+          <div class="callout">
+            <div class="callout__title">Need help now?</div>
+            <div class="callout__row">
+              <a class="btn btn--solid" href="tel:+17065551234">Call (706) 555-1234</a>
+              <span class="callout__muted">Mon-Sat • 8am–6pm</span>
+            </div>
+          </div>
+
+          <ul class="bullets">
+            <li>Free inspection + photo report</li>
+            <li>Insurance and financing guidance</li>
+            <li>Local crews serving Columbus, GA</li>
+          </ul>
+        </div>
+
+        <div class="formCard" aria-label="Lead generation form">
+          <div class="formCard__head">
+            <h3>Request My Estimate</h3>
+            <p>We respond fast. Because that’s kind of the whole point.</p>
+          </div>
+
+           <form id="quoteForm">
+      <label>First Name</label>
+      <input type="text" name="firstName" required />
+
+      <label>Last Name</label>
+      <input type="text" name="lastName" required />
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone" required pattern="[0-9]{10}" placeholder="(555)-555-5555)" />
+
+      <label>Email</label>
+      <input type="email" name="email" required />
+
+     <label>Address</label>
+<input
+  type="text"
+  id="address"
+  name="address"
+  placeholder="Begin typing your address..."
+  autocomplete="on"
+  required
+/>
+
+<input type="hidden" id="lat" name="lat" />
+<input type="hidden" id="lng" name="lng" />
+
+<div id="manualAddress" style="display:none; margin-top:10px;">
+  <input type="text" id="street" name="street" placeholder="Street Address" />
+  <input type="text" id="city" name="city" placeholder="City" />
+  <input type="text" id="state" name="state" placeholder="State" />
+  <input type="text" id="zip" name="zip" placeholder="ZIP Code" />
+</div>
+
+      <label>Services Needed</label>
+      <select name="service" required>
+        <option value="">Select one</option>
+        <option>Roof Repair</option>
+        <option>Roof Replacement</option>
+        <option>Storm Damage Inspection</option>
+        <option>Gutters Repair</option>
+        <option>Other</option>
+      </select>
+
+      <label>Interested In Financing Options?</label>
+      <select name="financing" required>
+        <option value="">Select one</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <label>Details</label>
+      <textarea name="details" rows="4"></textarea>
+
+      <button type="submit" class="btn" id="btn">Request Quote</button>
+
+      <div class="formStatus" id="formStatus"></div>
+    </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Maps Places API -->
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3n_1z_EwlffsduasxoHpx1gwRIgkdao&libraries=places&callback=initAutocomplete"
+  async
+  defer>
+</script>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="brand__mark brand__mark--footer" aria-hidden="true">LR</div>
+          <div>
+            <div class="footer__name">Liberty Roofing Professionals</div>
+            <div class="footer__sub">Columbus, GA • Roof Repair • Roof Replacement</div>
+          </div>
+        </div>
+
+        <div class="footer__cols">
+          <div class="footer__col">
+            <div class="footer__label">Contact</div>
+            <a href="tel:+17065551234">(706) 555-1234</a><br />
+            <a href="mailto:estimates@libertyroofingpros.com">estimates@libertyroofingpros.com</a>
+          </div>
+          <div class="footer__col">
+            <div class="footer__label">Hours</div>
+            Mon–Sat: 8am–6pm<br />
+            Sunday: Closed
+          </div>
+          <div class="footer__col">
+            <div class="footer__label">Service Area</div>
+            Columbus • Midland • Fortson • Phenix City • Surrounding areas
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="container footer__bottomInner">
+          <span>© <span id="year"></span> Liberty Roofing Professionals. All rights reserved.</span>
+          <span class="footer__tiny">Built to convert, not to “feel cute.”</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="javascript.js"></script>
+</body>
+</html>
