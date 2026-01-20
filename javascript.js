@@ -147,6 +147,64 @@ function initMobileMenu() {
   });
 }
 
+function initHeroVideoAudio() {
+  const video = document.querySelector(".videoCard__media");
+  const muteBtn = document.querySelector(".videoCard__mute");
+
+  if (!video || !muteBtn) return;
+
+  const syncMuteState = () => {
+    const isMuted = video.muted || video.volume === 0;
+    muteBtn.textContent = isMuted ? "Unmute" : "Mute";
+    muteBtn.setAttribute("aria-label", isMuted ? "Unmute video" : "Mute video");
+  };
+
+  const playWithAudioFallback = () => {
+    video.muted = false;
+    video.removeAttribute("muted");
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {
+        video.muted = true;
+        video.setAttribute("muted", "");
+        const mutedPromise = video.play();
+        if (mutedPromise && typeof mutedPromise.catch === "function") {
+          mutedPromise.catch(() => {});
+        }
+        syncMuteState();
+      });
+    }
+  };
+
+  muteBtn.addEventListener("click", () => {
+    const isMuted = video.muted || video.volume === 0;
+
+    if (isMuted) {
+      video.muted = false;
+      video.removeAttribute("muted");
+      if (video.volume === 0) video.volume = 1;
+    } else {
+      video.muted = true;
+      video.setAttribute("muted", "");
+    }
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
+
+    syncMuteState();
+  });
+
+  video.addEventListener("volumechange", syncMuteState);
+  video.addEventListener("play", syncMuteState);
+
+  playWithAudioFallback();
+  syncMuteState();
+}
+
 // Init
 setYear();
 initMobileMenu();
+initHeroVideoAudio();
