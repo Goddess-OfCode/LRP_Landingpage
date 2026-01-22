@@ -225,6 +225,11 @@ img{ max-width:100%; display:block; }
   gap: 12px;
   flex-wrap: wrap;
   margin: 14px 0 18px;
+  width: 100%;
+  max-width: 470px;
+}
+.hero__media .hero__cta{
+  align-self: flex-end;
 }
 .hero__content .formCard{
   margin-top: 18px;
