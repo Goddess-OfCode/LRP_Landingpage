@@ -30,13 +30,14 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a class="brand" href="#top" aria-label="Liberty Roofing Professionals">
-        <img src="images/liberty-roofing-logo-5.png" alt="Image" width="150" height="100"/>
+        <img src="images/LRP LOGO 1-2.png" alt="Image" width="100" height="100"/>
         <span class="brand__text">
           <span class="brand__name">Liberty Roofing Professionals</span>
-          <span class="brand__sub">Columbus, Georgia 31904</span>
+          <span class="brand__sub">Your Trusted Roofing Profesionals in Columbus, GA</span>
         </span>
       </a>
 
+      
       <nav class="nav" aria-label="Primary">
         <a href="#lead-form" class="btn btn--small btn--outline">Schedule</a>
         <a href="tel:+1706-389-9637" class="btn btn--small btn--solid" aria-label="Call Liberty Roofing Professionals">
@@ -57,34 +58,96 @@
       </div>
     </div>
   </header>
+  <!-- Sub-hero strip -->
+      <div class="heroStrip">
+        <div class="container heroStrip__inner">
+          <div class="stripItem"><span class="dot"></span> Roof Replacements </div>
+          <div class="stripItem"><span class="dot"></span> Roof Repairs </div>
+          <div class="stripItem"><span class="dot"></span> Emergency Services</div>
+        </div>
+      </div>
 
   <!-- Hero -->
   <main id="top">
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__content">
-          <p class="eyebrow">Your Trusted Roofing Profesionals in Columbus, GA</p>
           <h1 class="hero__title">        
-              EXCEPTIONAL ROOFING SERVICES
+              1 DAY ROOF INSTALLATIONS
         <div></div>
-            <span class="hero__titleAccent">FROM $89 MONTHLY</span>
+            <span class="hero__titleAccent">STARTING AT $89 MONTHLY</span>
           </h1>
           <p class="hero__subtitle">
             Efficient inspections, expert installs, and clean job sites. 
           </p>
-           <ul class="bullets">
-            <li>Emergency Services</li>
-            <li>Roof Replacements</li>
-            <li>Roof Repairs</li>
-            <li>Gutter Cleaning</li>
-            <li>Metal Roofs</li>
-            <li>Asphalt Roofs</li>
-          </ul>
-          <div class="hero__cta">
-            <a class="btn btn--solid btn--lg" href="#lead-form">Get My Free Estimate</a>
-            <a class="btn btn--outline btn--lg" href="tel:+17063899637">Call Now</a>
+          <div class="formCard" id="lead-form" aria-label="Lead generation form">
+            <div class="formCard__head">
+              <h3>Request My Estimate</h3>
+              <p>We respond fast. Because that’s kind of the whole point.</p>
+            </div>
+
+             <form id="quoteForm">
+        <label>First Name</label>
+        <input type="text" name="firstName" required />
+
+        <label>Last Name</label>
+        <input type="text" name="lastName" required />
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone" required pattern="[0-9]{10}" placeholder="(555)-555-5555)" />
+
+        <label>Email</label>
+        <input type="email" name="email" required />
+
+       <label>Address</label>
+  <input
+    type="text"
+    id="address"
+    name="address"
+    placeholder="Begin typing your address..."
+    autocomplete="on"
+    required/>
+
+        <label>Services Needed</label>
+        <select name="service" required>
+          <option value="">Select one</option>
+          <option>Roof Repair (Shingle/Metal/Asphalt)</option>
+          <option>Roof Replacement (Shingle/Metal/Asphalt)</option>
+          <option>Emergency Services</option>
+          <option>Other</option>
+        </select>
+
+        <label>Interested In Financing Options?</label>
+        <select name="financing" required>
+          <option value="">Select one</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+        <div class="fieldRow">
+          <div class="field">
+            <label for="preferredDate">Preferred Date</label>
+            <input type="date" id="preferredDate" name="preferredDate" required />
+          </div>
+          <div class="field">
+            <label for="preferredTime">Preferred Time</label>
+            <input type="time" id="preferredTime" name="preferredTime" required />
+          </div>
+        </div>
+
+        <label>Roof Details</label>
+        <textarea name="details" rows="4" placeholder="Roof Type/Age/Service-Details"></textarea>
+
+        <button type="submit" class="btn" id="btn">Request Quote</button>
+
+        <div class="formStatus" id="formStatus"></div>
+        <p id="consent"> By submitting this form, I Consent to Receive SMS Notifications, Alerts & Occasional Marketing Communication from Liberty Roofing Professionals. Message frequency varies. Message & data rates may apply. Text HELP for assistance. You can reply STOP to unsubscribe at any time.</p>
+      </form>
           </div>
 
+        </div>
+
+        <div class="hero__media" aria-label="Service highlights and video">
           <div class="videoCard">
             <div class="videoCard__header">
               <div class="videoCard__title">See why homeowners trust Liberty Roofing Professionals</div>
@@ -116,88 +179,15 @@
             </div>
           </div>
 
-          </div>
-
-        <div class="hero__media" aria-label="Lead form">
-          <div class="formCard" id="lead-form" aria-label="Lead generation form">
-            <div class="formCard__head">
-              <h3>Request My Estimate</h3>
-              <p>We respond fast. Because that’s kind of the whole point.</p>
-            </div>
-
-             <form id="quoteForm">
-        <label>First Name</label>
-        <input type="text" name="firstName" required />
-
-        <label>Last Name</label>
-        <input type="text" name="lastName" required />
-
-        <label>Phone Number</label>
-        <input type="tel" name="phone" required pattern="[0-9]{10}" placeholder="(555)-555-5555)" />
-
-        <label>Email</label>
-        <input type="email" name="email" required />
-
-       <label>Address</label>
-  <input
-    type="text"
-    id="address"
-    name="address"
-    placeholder="Begin typing your address..."
-    autocomplete="on"
-    required
-  />
-
-  <input type="hidden" id="lat" name="lat" />
-  <input type="hidden" id="lng" name="lng" />
-  <input type="hidden" id="timezone" name="timezone" />
-
-  <div id="manualAddress" style="display:none; margin-top:10px;">
-    <input type="text" id="street" name="street" placeholder="Street Address" />
-    <input type="text" id="city" name="city" placeholder="City" />
-    <input type="text" id="state" name="state" placeholder="State" />
-    <input type="text" id="zip" name="zip" placeholder="ZIP Code" />
-  </div>
-
-        <label>Services Needed</label>
-        <select name="service" required>
-          <option value="">Select one</option>
-          <option>Roof Repair (Shingle/Metal/Asphalt)</option>
-          <option>Roof Replacement (Shingle/Metal/Asphalt)</option>
-          <option>Emergency Services</option>
-          <option>Gutters Cleaning</option>
-          <option>Other</option>
-        </select>
-
-        <label>Interested In Financing Options?</label>
-        <select name="financing" required>
-          <option value="">Select one</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-
-        <div class="fieldRow">
-          <div class="field">
-            <label for="preferredDate">Preferred Date</label>
-            <input type="date" id="preferredDate" name="preferredDate" required />
-          </div>
-          <div class="field">
-            <label for="preferredTime">Preferred Time</label>
-            <input type="time" id="preferredTime" name="preferredTime" required />
+          <div class="hero__cta">
+            <a class="btn btn--solid btn--lg" href="#lead-form">Get My Free Estimate</a>
+            <a class="btn btn--outline btn--lg" href="tel:+17063899637">Call Now</a>
           </div>
         </div>
-
-        <label>Roof Details</label>
-        <textarea name="details" rows="4" placeholder="Roof Type/Age/Service-Details"></textarea>
-
-        <button type="submit" class="btn" id="btn">Request Quote</button>
-
-        <div class="formStatus" id="formStatus"></div>
-        <p id="consent"> By submitting this form, I Consent to Receive SMS Notifications, Alerts & Occasional Marketing Communication from Liberty Roofing Professionals. Message frequency varies. Message & data rates may apply. Text HELP for assistance. You can reply STOP to unsubscribe at any time.</p>
-      </form>
-          </div>
-        </div>
+        
       </div>
+
+      
 
       <!-- Sub-hero strip -->
       <div class="heroStrip">

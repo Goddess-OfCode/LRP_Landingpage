@@ -226,7 +226,7 @@ img{ max-width:100%; display:block; }
   flex-wrap: wrap;
   margin: 14px 0 18px;
 }
-.hero__content .videoCard{
+.hero__content .formCard{
   margin-top: 18px;
 }
 
@@ -258,7 +258,13 @@ img{ max-width:100%; display:block; }
 .trustSub{ font-size: .88rem; color: rgba(0,0,0,.62); margin-top: 2px; }
 
 /* Video Card */
-.hero__media{ display:flex; justify-content:flex-end; }
+.hero__media{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 18px;
+}
 .videoCard{
   width: 100%;
   max-width: 470px;
@@ -489,6 +495,10 @@ img{ max-width:100%; display:block; }
   color: rgba(0,0,0,.72);
   font-weight: 650;
 }
+.hero__media .bullets{
+  max-width: 470px;
+  width: 100%;
+}
 .bullets li{ margin: 8px 0; }
 
 .formCard{
@@ -614,7 +624,7 @@ textarea{ resize: vertical; }
   .nav{ display:none; }
   .hamburger{ display:block; }
   .hero__grid{ grid-template-columns: 1fr; }
-  .hero__media{ justify-content:flex-start; }
+  .hero__media{ justify-content:flex-start; align-items:flex-start; }
   .trustRow{ grid-template-columns: 1fr; }
   .cardsGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
   .featuresGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
