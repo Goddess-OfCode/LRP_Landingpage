@@ -665,14 +665,6 @@ textarea{ resize: vertical; }
   color: rgba(0,0,0,.6);
   font-size: .85rem;
 }
-.estimate .chk{
-  display:flex;
-  gap: 10px;
-  align-items:flex-start;
-  color: rgba(0,0,0,.7);
-  font-size: .85rem;
-  margin-top: 12px;
-}
 .estimate .result{
   display:grid;
   grid-template-columns: 1fr 1fr;

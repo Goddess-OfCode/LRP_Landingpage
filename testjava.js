@@ -29,7 +29,6 @@ const complexityEl = document.getElementById("complexity");
 const nameEl = document.getElementById("name");
 const phoneEl = document.getElementById("phone");
 const emailEl = document.getElementById("email");
-const consentEl = document.getElementById("consent");
 
 const toStep2Btn = document.getElementById("toStep2");
 const backTo1Btn = document.getElementById("backTo1");
@@ -167,7 +166,6 @@ leadForm.addEventListener("submit", async (e) => {
   const name = nameEl.value.trim();
   const phone = phoneEl.value.trim();
   const email = emailEl.value.trim();
-  const consent = consentEl.checked;
 
   if (!MAPBOX_TOKEN || String(MAPBOX_TOKEN).trim() === "") {
     setStatus(status2, "Paste your Mapbox token into MAPBOX_TOKEN in testjava.js.");
@@ -187,10 +185,6 @@ leadForm.addEventListener("submit", async (e) => {
   }
   if (!looksLikeEmail(email)) {
     setStatus(status2, "Enter a valid email address.");
-    return;
-  }
-  if (!consent) {
-    setStatus(status2, "Please check the consent box to continue.");
     return;
   }
 
