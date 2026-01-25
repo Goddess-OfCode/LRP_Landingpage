@@ -14,113 +14,128 @@ if (preferredDateInput) {
   preferredDateInput.min = new Date().toISOString().split("T")[0];
 }
 
- // Form Submission
-    document.getElementById("quoteForm").addEventListener("submit", async function (e) {
-      const statusEl = document.getElementById("formStatus");
-      const addressInput = document.getElementById("address");
-      const manualAddressVisible = document.getElementById("manualAddress").style.display === "block";
+const quoteForm = document.getElementById("quoteForm");
 
-      if (!addressInput.disabled && !addressSelected && !manualAddressVisible) {
+if (quoteForm) {
+  quoteForm.addEventListener("submit", async function (e) {
+    const statusEl = document.getElementById("formStatus");
+    const addressInput = document.getElementById("address");
+    const manualAddressEl = document.getElementById("manualAddress");
+    const manualAddressVisible = manualAddressEl ? manualAddressEl.style.display === "block" : false;
+
+    if (addressInput && !addressInput.disabled && !addressSelected && !manualAddressVisible) {
+      e.preventDefault();
+      alert("Please select a valid address from the suggestions.");
+      return;
+    }
+
+    if (!this.checkValidity()) {
+      e.preventDefault();
+      this.reportValidity();
+      return;
+    }
+
+    if (preferredDateInput && preferredTimeInput) {
+      const selectedDate = preferredDateInput.value;
+      const selectedTime = preferredTimeInput.value;
+      const selectedDateTime = new Date(`${selectedDate}T${selectedTime}`);
+
+      if (Number.isNaN(selectedDateTime.getTime()) || selectedDateTime.getTime() < Date.now()) {
         e.preventDefault();
-        alert("Please select a valid address from the suggestions.");
-        return;
-      }
-
-      if (!this.checkValidity()) {
-        e.preventDefault();
-        this.reportValidity();
-        return;
-      }
-
-      if (preferredDateInput && preferredTimeInput) {
-        const selectedDate = preferredDateInput.value;
-        const selectedTime = preferredTimeInput.value;
-        const selectedDateTime = new Date(`${selectedDate}T${selectedTime}`);
-
-        if (Number.isNaN(selectedDateTime.getTime()) || selectedDateTime.getTime() < Date.now()) {
-          e.preventDefault();
+        if (statusEl) {
           statusEl.className = "formStatus formStatus--bad";
           statusEl.textContent = "Please choose a future date and time.";
-          return;
         }
+        return;
       }
+    }
 
-      e.preventDefault();
+    e.preventDefault();
 
-      if (timezoneInput) {
-        timezoneInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone || "Local";
-      }
+    if (timezoneInput) {
+      timezoneInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone || "Local";
+    }
 
-      const formData = Object.fromEntries(new FormData(this).entries());
+    const formData = Object.fromEntries(new FormData(this).entries());
+    if (statusEl) {
       statusEl.className = "formStatus";
       statusEl.textContent = "";
+    }
 
-      try {
-        const response = await fetch("https://formspree.io/f/xqearbyz", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
-        });
+    try {
+      const response = await fetch("https://formspree.io/f/xqearbyz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
 
-        if (response.ok) {
+      if (response.ok) {
+        if (statusEl) {
           statusEl.className = "formStatus formStatus--ok";
           statusEl.textContent = "Your request has been sent successfully.";
-          this.reset();
-        } else {
-          throw new Error();
         }
-      } catch {
+        this.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      if (statusEl) {
         statusEl.className = "formStatus formStatus--bad";
         statusEl.textContent = "Something went wrong. Please try again.";
       }
-    });
- 
+    }
+  });
 
-  
   setTimeout(() => {
     if (typeof google === "undefined") {
-      document.getElementById("manualAddress").style.display = "block";
-      document.getElementById("address").disabled = true;
-      alert("Address verification unavailable. Please enter your address manually.");
+      const manualAddressEl = document.getElementById("manualAddress");
+      const addressInput = document.getElementById("address");
+      if (manualAddressEl && addressInput) {
+        manualAddressEl.style.display = "block";
+        addressInput.disabled = true;
+        alert("Address verification unavailable. Please enter your address manually.");
+      }
     }
   }, 3000);
+}
 
+let autocomplete;
+let addressSelected = false;
 
-  let autocomplete;
-  let addressSelected = false;
+function initAutocomplete() {
+  const addressInput = document.getElementById("address");
+  if (!addressInput || !window.google?.maps?.places) return;
 
-  function initAutocomplete() {
-    const addressInput = document.getElementById("address");
+  autocomplete = new google.maps.places.Autocomplete(addressInput, {
+    types: ["address"],
+    componentRestrictions: { country: "us" },
+    fields: ["formatted_address", "geometry"]
+  });
 
-    autocomplete = new google.maps.places.Autocomplete(addressInput, {
-      types: ["address"],
-      componentRestrictions: { country: "us" },
-      fields: ["formatted_address", "geometry"]
-    });
+  const latEl = document.getElementById("lat");
+  const lngEl = document.getElementById("lng");
 
-    autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace();
+  autocomplete.addListener("place_changed", () => {
+    const place = autocomplete.getPlace();
 
-      if (!place.geometry) {
-        addressSelected = false;
-        return;
-      }
-
-      // Force Google-selected address
-      addressInput.value = place.formatted_address;
-      document.getElementById("lat").value = place.geometry.location.lat();
-      document.getElementById("lng").value = place.geometry.location.lng();
-
-      addressSelected = true;
-    });
-
-    // If user types but doesn’t select
-    addressInput.addEventListener("input", () => {
+    if (!place.geometry) {
       addressSelected = false;
-      document.getElementById("lat").value = "";
-      document.getElementById("lng").value = "";
-    });
-  }
+      return;
+    }
+
+    addressInput.value = place.formatted_address;
+    if (latEl) latEl.value = place.geometry.location.lat();
+    if (lngEl) lngEl.value = place.geometry.location.lng();
+
+    addressSelected = true;
+  });
+
+  addressInput.addEventListener("input", () => {
+    addressSelected = false;
+    if (latEl) latEl.value = "";
+    if (lngEl) lngEl.value = "";
+  });
+}
 
 // Mobile menu toggle
 function initMobileMenu() {

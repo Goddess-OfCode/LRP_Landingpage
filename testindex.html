@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instant Roof Estimate</title>
+  <link rel="stylesheet" href="teststyle.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <h1>Instant Roof Estimate by Address</h1>
+        <p class="sub">Fast ballpark estimate now. Final price confirmed after a free 16-point inspection.</p>
+      </div>
+      <a class="call" href="tel:7063899637">Call <strong>706-389-9637</strong></a>
+    </header>
+
+    <section class="card">
+      <div class="steps">
+        <div class="step active" data-step="1">1. Property</div>
+        <div class="step" data-step="2">2. Contact</div>
+        <div class="step" data-step="3">3. Estimate</div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="panel" id="step1">
+        <h2>Property Details</h2>
+
+        <label class="label" for="address">Property Address</label>
+        <input id="address" class="input" placeholder="123 Main St, Columbus, GA" autocomplete="street-address" />
+
+        <div class="grid">
+          <div>
+            <label class="label" for="material">Roof Type</label>
+            <select id="material" class="input">
+              <option value="shingle" selected>Architectural Shingle</option>
+              <option value="metal">Metal</option>
+              <option value="tile">Tile</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="label" for="pitch">Roof Pitch</label>
+            <select id="pitch" class="input">
+              <option value="low">Low (3/12–4/12)</option>
+              <option value="medium" selected>Medium (5/12–7/12)</option>
+              <option value="steep">Steep (8/12+)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div>
+            <label class="label" for="stories">Stories</label>
+            <select id="stories" class="input">
+              <option value="1" selected>1 Story</option>
+              <option value="2">2 Story</option>
+              <option value="3">3+ Story</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="label" for="complexity">Complexity</label>
+            <select id="complexity" class="input">
+              <option value="simple" selected>Simple</option>
+              <option value="average">Average</option>
+              <option value="complex">Complex</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn" id="toStep2">Continue</button>
+        </div>
+
+        <p class="fine">
+          This estimate uses aerial footprint data. Final pricing confirmed after inspection.
+        </p>
+        <div id="status1" class="status" aria-live="polite"></div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="panel" id="step2" hidden>
+      <form id="leadForm" action="https://formspree.io/f/xlgjkkpl" method="POST">
+  <h2>Where should we send your estimate?</h2>
+
+  <div class="grid">
+    <div>
+      <label class="label" for="name">Full Name</label>
+      <input id="name" name="name" class="input" placeholder="Your name" autocomplete="name" required />
+    </div>
+    <div>
+      <label class="label" for="phone">Phone Number</label>
+      <input id="phone" name="phone" class="input" placeholder="(706) 389-9637" autocomplete="tel" required />
+    </div>
+  </div>
+
+  <label class="label" for="email">Email</label>
+  <input id="email" name="email" class="input" placeholder="you@email.com" autocomplete="email" required />
+
+  <!-- Include the address and selections so they get emailed too -->
+  <input type="hidden" id="fs_address" name="address" />
+  <input type="hidden" id="fs_material" name="material" />
+  <input type="hidden" id="fs_pitch" name="pitch" />
+  <input type="hidden" id="fs_stories" name="stories" />
+  <input type="hidden" id="fs_complexity" name="complexity" />
+
+  <!-- Hidden fields for estimate result -->
+  <input type="hidden" id="fs_area_sqft" name="estimated_roof_sqft" />
+  <input type="hidden" id="fs_squares" name="estimated_squares" />
+  <input type="hidden" id="fs_low" name="estimated_low" />
+  <input type="hidden" id="fs_high" name="estimated_high" />
+
+  <label class="chk">
+    <input type="checkbox" id="consent" name="consent" required />
+    I agree to be contacted about my estimate and inspection scheduling.
+  </label>
+
+  <!-- Optional: subject line in the email -->
+  <input type="hidden" name="_subject" value="New Instant Roof Estimate Lead" />
+
+  <div class="row two">
+    <button type="button" class="btn ghost" id="backTo1">Back</button>
+    <button type="submit" class="btn" id="getEstimate">Get My Instant Estimate</button>
+  </div>
+
+  <div id="status2" class="status" aria-live="polite"></div>
+  <p class="fine">
+    You’ll get a ballpark range now. A final quote is confirmed after your free 16-point inspection.
+  </p>
+      </form>
+      </div>
+
+
+      <!-- STEP 3 -->
+      <div class="panel" id="step3" hidden>
+        <h2>Your Estimated Price Range</h2>
+
+        <div class="result">
+          <div class="box">
+            <div class="k">Approx. Roof Area</div>
+            <div class="v"><span id="areaSqft">—</span> sq ft</div>
+            <div class="m"><span id="squares">—</span> squares (incl. waste)</div>
+          </div>
+          <div class="box">
+            <div class="k">Estimated Range</div>
+            <div class="v big">$<span id="low">—</span> – $<span id="high">—</span></div>
+            <div class="m">Final pricing confirmed after inspection</div>
+          </div>
+        </div>
+
+        <div class="row two">
+          <a class="btn" href="tel:7063899637">Call 706-389-9637</a>
+          <button class="btn ghost" id="startOver">Start Over</button>
+        </div>
+
+        <p class="fine">
+          Disclaimer: This is a ballpark estimate based on aerial footprint data and assumptions. Roof pitch, layers,
+          decking condition, ventilation, and material selections affect final pricing.
+        </p>
+      </div>
+
+    </section>
+
+    <footer class="foot">
+      <span>Serving Columbus GA & Southwest Georgia</span>
+      <span>Free 16-Point Inspection • 1-Day Installation</span>
+       <p class="fineprint">
+        Uses Mapbox to geocode the address and OpenStreetMap footprint data to approximate roof area.
+        Not all addresses have footprint data available.
+      </p>
+    </footer>
+  </main>
+
+  <script src="testjava.js"></script>
+</body>
+</html>
+
+      
+     
+
+      <div id="status" class="status" aria-live="polite"></div>
+    </section>
+
+    <section class="card" id="resultCard" hidden>
+      <h2>Estimated Price Range</h2>
+      <div class="result">
+        <div>
+          <div class="k">Approx. Roof Area</div>
+          <div class="v"><span id="areaSqft">—</span> sq ft (<span id="squares">—</span> squares)</div>
+        </div>
+        <div>
+          <div class="k">Estimated Range</div>
+          <div class="v big">$<span id="low">—</span> – $<span id="high">—</span></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3>Next Step: Free 16-Point Inspection</h3>
+      <p class="sub">We’ll verify measurements, pitch, layers, decking condition, and ventilation. Then confirm the final quote.</p>
+
+      <div class="ctaRow">
+        <a class="btn secondary" href="tel:7063899637">Call 706-389-9637</a>
+        <button id="btnRecalc" class="btn">Recalculate</button>
+      </div>
+
+      <p class="fineprint">
+        Disclaimer: This is a ballpark estimate based on aerial footprint data and assumed pitch/complexity.
+        Final pricing may vary.
+      </p>
+    </section>
+  </main>
+
+  <script src="testjava.js"></script>
+</body>
+</html>

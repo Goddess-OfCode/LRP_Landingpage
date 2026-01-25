@@ -85,64 +85,144 @@
               <h3>Request My Estimate</h3>
               <p>We respond fast. Because that’s kind of the whole point.</p>
             </div>
+            <div class="estimate">
+              <div class="steps">
+                <div class="step active" data-step="1">1. Property</div>
+                <div class="step" data-step="2">2. Contact</div>
+                <div class="step" data-step="3">3. Estimate</div>
+              </div>
 
-             <form id="quoteForm">
-        <label>First Name</label>
-        <input type="text" name="firstName" required />
+              <div class="panel" id="step1">
+                <h2>Property Details</h2>
 
-        <label>Last Name</label>
-        <input type="text" name="lastName" required />
+                <label class="label" for="address">Property Address</label>
+                <input id="address" class="input" placeholder="123 Main St, Columbus, GA" autocomplete="street-address" />
 
-        <label>Phone Number</label>
-        <input type="tel" name="phone" required pattern="[0-9]{10}" placeholder="(555)-555-5555)" />
+                <div class="grid">
+                  <div>
+                    <label class="label" for="material">Roof Type</label>
+                    <select id="material" class="input">
+                      <option value="shingle" selected>Architectural Shingle</option>
+                      <option value="metal">Metal</option>
+                      <option value="tile">Tile</option>
+                    </select>
+                  </div>
 
-        <label>Email</label>
-        <input type="email" name="email" required />
+                  <div>
+                    <label class="label" for="pitch">Roof Pitch</label>
+                    <select id="pitch" class="input">
+                      <option value="low">Low (3/12–4/12)</option>
+                      <option value="medium" selected>Medium (5/12–7/12)</option>
+                      <option value="steep">Steep (8/12+)</option>
+                    </select>
+                  </div>
+                </div>
 
-       <label>Address</label>
-  <input
-    type="text"
-    id="address"
-    name="address"
-    placeholder="Begin typing your address..."
-    autocomplete="on"
-    required/>
+                <div class="grid">
+                  <div>
+                    <label class="label" for="stories">Stories</label>
+                    <select id="stories" class="input">
+                      <option value="1" selected>1 Story</option>
+                      <option value="2">2 Story</option>
+                      <option value="3">3+ Story</option>
+                    </select>
+                  </div>
 
-        <label>Services Needed</label>
-        <select name="service" required>
-          <option value="">Select one</option>
-          <option>Roof Repair (Shingle/Metal/Asphalt)</option>
-          <option>Roof Replacement (Shingle/Metal/Asphalt)</option>
-          <option>Emergency Services</option>
-          <option>Other</option>
-        </select>
+                  <div>
+                    <label class="label" for="complexity">Complexity</label>
+                    <select id="complexity" class="input">
+                      <option value="simple" selected>Simple</option>
+                      <option value="average">Average</option>
+                      <option value="complex">Complex</option>
+                    </select>
+                  </div>
+                </div>
 
-        <label>Interested In Financing Options?</label>
-        <select name="financing" required>
-          <option value="">Select one</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
+                <div class="row">
+                  <button class="btn" id="toStep2">Continue</button>
+                </div>
 
-        <div class="fieldRow">
-          <div class="field">
-            <label for="preferredDate">Preferred Date</label>
-            <input type="date" id="preferredDate" name="preferredDate" required />
-          </div>
-          <div class="field">
-            <label for="preferredTime">Preferred Time</label>
-            <input type="time" id="preferredTime" name="preferredTime" required />
-          </div>
-        </div>
+                <p class="fine">
+                  This estimate uses aerial footprint data. Final pricing confirmed after inspection.
+                </p>
+                <div id="status1" class="status" aria-live="polite"></div>
+              </div>
 
-        <label>Roof Details</label>
-        <textarea name="details" rows="4" placeholder="Roof Type/Age/Service-Details"></textarea>
+              <div class="panel" id="step2" hidden>
+                <form id="leadForm" action="https://formspree.io/f/xlgjkkpl" method="POST">
+                  <h2>Where should we send your estimate?</h2>
 
-        <button type="submit" class="btn" id="btn">Request Quote</button>
+                  <div class="grid">
+                    <div>
+                      <label class="label" for="name">Full Name</label>
+                      <input id="name" name="name" class="input" placeholder="Your name" autocomplete="name" required />
+                    </div>
+                    <div>
+                      <label class="label" for="phone">Phone Number</label>
+                      <input id="phone" name="phone" class="input" placeholder="(706) 389-9637" autocomplete="tel" required />
+                    </div>
+                  </div>
 
-        <div class="formStatus" id="formStatus"></div>
-        <p id="consent"> By submitting this form, I Consent to Receive SMS Notifications, Alerts & Occasional Marketing Communication from Liberty Roofing Professionals. Message frequency varies. Message & data rates may apply. Text HELP for assistance. You can reply STOP to unsubscribe at any time.</p>
-      </form>
+                  <label class="label" for="email">Email</label>
+                  <input id="email" name="email" class="input" placeholder="you@email.com" autocomplete="email" required />
+
+                  <input type="hidden" id="fs_address" name="address" />
+                  <input type="hidden" id="fs_material" name="material" />
+                  <input type="hidden" id="fs_pitch" name="pitch" />
+                  <input type="hidden" id="fs_stories" name="stories" />
+                  <input type="hidden" id="fs_complexity" name="complexity" />
+
+                  <input type="hidden" id="fs_area_sqft" name="estimated_roof_sqft" />
+                  <input type="hidden" id="fs_squares" name="estimated_squares" />
+                  <input type="hidden" id="fs_low" name="estimated_low" />
+                  <input type="hidden" id="fs_high" name="estimated_high" />
+
+                  <label class="chk">
+                    <input type="checkbox" id="consent" name="consent" required />
+                    I agree to be contacted about my estimate and inspection scheduling.
+                  </label>
+
+                  <input type="hidden" name="_subject" value="New Instant Roof Estimate Lead" />
+
+                  <div class="row two">
+                    <button type="button" class="btn ghost" id="backTo1">Back</button>
+                    <button type="submit" class="btn" id="getEstimate">Get My Instant Estimate</button>
+                  </div>
+
+                  <div id="status2" class="status" aria-live="polite"></div>
+                  <p class="fine">
+                    You’ll get a ballpark range now. A final quote is confirmed after your free 16-point inspection.
+                  </p>
+                </form>
+              </div>
+
+              <div class="panel" id="step3" hidden>
+                <h2>Your Estimated Price Range</h2>
+
+                <div class="result">
+                  <div class="box">
+                    <div class="k">Approx. Roof Area</div>
+                    <div class="v"><span id="areaSqft">—</span> sq ft</div>
+                    <div class="m"><span id="squares">—</span> squares (incl. waste)</div>
+                  </div>
+                  <div class="box">
+                    <div class="k">Estimated Range</div>
+                    <div class="v big">$<span id="low">—</span> – $<span id="high">—</span></div>
+                    <div class="m">Final pricing confirmed after inspection</div>
+                  </div>
+                </div>
+
+                <div class="row two">
+                  <button class="btn" type="button" onclick="window.location.href='tel:7063899637'">Call 706-389-9637</button>
+                  <button class="btn ghost" id="startOver">Start Over</button>
+                </div>
+
+                <p class="fine">
+                  Disclaimer: This is a ballpark estimate based on aerial footprint data and assumptions. Roof pitch, layers,
+                  decking condition, ventilation, and material selections affect final pricing.
+                </p>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -154,8 +234,8 @@
             </div>
 
             <div class="videoCard__mediaWrap">
-              <video class="videoCard__media" autoplay loop playsinline poster="images/placeholder.jpeg">
-                <source src="/images/LRP Video W audio 1-3 (1).mp4" type="video/mp4" />
+              <video class="videoCard__media" autoplay loop muted playsinline poster="images/placeholder.jpeg">
+                <source src="images/LRP Video W audio 1-3 (1).mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               <button class="videoCard__mute btn btn--outline btn--small" type="button" aria-label="Mute video">Mute</button>
@@ -179,10 +259,7 @@
             </div>
           </div>
 
-          <div class="hero__cta">
-            <a class="btn btn--solid btn--lg" href="#lead-form">Get My Free Estimate</a>
-            <a class="btn btn--outline btn--lg" href="tel:+17063899637">Call Now</a>
-          </div>
+
         </div>
         
       </div>
@@ -203,13 +280,6 @@
   
 
 
-    <!-- Google Maps Places API -->
-  <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3n_1z_EwlffsduasxoHpx1gwRIgkdao&libraries=places&callback=initAutocomplete"
-  async
-  defer>
-</script>
-
     <!-- Footer -->
     <footer class="footer">
       <div class="container footer__inner">
@@ -229,7 +299,7 @@
           </div>
           <div class="footer__col">
             <div class="footer__label">Office</div>
-           1955 Northside Industrial Blvd, Columbus, GA, United States, 31904<br />
+           1955 Northside Industrial Blvd,<br> Columbus, GA, United States, 31904<br />
             
           </div>
           <div class="footer__col">
@@ -249,5 +319,11 @@
   </main>
 
   <script src="javascript.js"></script>
+  <script src="testjava.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3n_1z_EwlffsduasxoHpx1gwRIgkdao&libraries=places&callback=initAutocomplete"
+    async
+    defer>
+  </script>
 </body>
 </html>
