@@ -25,6 +25,13 @@ const materialEl = document.getElementById("material");
 const pitchEl = document.getElementById("pitch");
 const storiesEl = document.getElementById("stories");
 const complexityEl = document.getElementById("complexity");
+const materialSelect = document.querySelector(".materialSelect");
+const materialSelectCard = materialSelect?.closest(".formCard");
+const materialTrigger = materialSelect?.querySelector(".materialSelect__trigger");
+const materialTriggerImg = materialSelect?.querySelector(".materialSelect__triggerImg");
+const materialTriggerText = materialSelect?.querySelector(".materialSelect__triggerText");
+const materialMenu = materialSelect?.querySelector(".materialSelect__menu");
+const materialOptions = materialSelect ? [...materialSelect.querySelectorAll(".materialSelect__option")] : [];
 
 const nameEl = document.getElementById("name");
 const phoneEl = document.getElementById("phone");
@@ -34,6 +41,73 @@ const toStep2Btn = document.getElementById("toStep2");
 const backTo1Btn = document.getElementById("backTo1");
 const leadForm = document.getElementById("leadForm");
 const startOverBtn = document.getElementById("startOver");
+
+function initMaterialSelect() {
+  if (!materialEl || !materialSelect || !materialTrigger || !materialTriggerImg || !materialTriggerText || !materialMenu || !materialOptions.length) return;
+
+  const setSelection = (option, emitChange = true) => {
+    if (!option) return;
+    const value = option.dataset.value;
+    const optionImg = option.querySelector(".materialSelect__optionImg");
+    const optionText = option.querySelector(".materialSelect__optionText");
+
+    if (value) materialEl.value = value;
+    if (optionImg) materialTriggerImg.src = optionImg.src;
+    if (optionText) materialTriggerText.textContent = optionText.textContent;
+
+    materialOptions.forEach((opt) => {
+      opt.setAttribute("aria-selected", opt === option ? "true" : "false");
+    });
+
+    if (emitChange) materialEl.dispatchEvent(new Event("change", { bubbles: true }));
+  };
+
+  const closeMenu = () => {
+    materialSelect.classList.remove("materialSelect--open");
+    materialTrigger.setAttribute("aria-expanded", "false");
+    materialSelectCard?.classList.remove("formCard--open");
+  };
+
+  const openMenu = () => {
+    materialSelect.classList.add("materialSelect--open");
+    materialTrigger.setAttribute("aria-expanded", "true");
+    materialSelectCard?.classList.add("formCard--open");
+  };
+
+  const initial = materialOptions.find((option) => option.dataset.value === materialEl.value) || materialOptions[0];
+  setSelection(initial, false);
+
+  materialTrigger.addEventListener("click", () => {
+    if (materialSelect.classList.contains("materialSelect--open")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  materialOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      setSelection(option);
+      closeMenu();
+      materialTrigger.focus();
+    });
+  });
+
+  materialEl.addEventListener("change", () => {
+    const match = materialOptions.find((option) => option.dataset.value === materialEl.value);
+    if (match) setSelection(match, false);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!materialSelect.contains(event.target)) closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+}
+
+initMaterialSelect();
 
 function setStep(n){
   stepEls.forEach(el => el.classList.toggle("active", el.dataset.step === String(n)));

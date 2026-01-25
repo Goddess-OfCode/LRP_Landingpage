@@ -219,7 +219,41 @@ function initHeroVideoAudio() {
   syncMuteState();
 }
 
+function initReviewTruncation() {
+  const reviews = document.querySelectorAll(".hero__reviews .review blockquote");
+  const limit = 100;
+
+  reviews.forEach((blockquote) => {
+    const fullText = blockquote.textContent.trim();
+    if (fullText.length <= limit) return;
+
+    const truncated = `${fullText.slice(0, limit).trimEnd()}...`;
+    blockquote.textContent = "";
+
+    const textSpan = document.createElement("span");
+    textSpan.className = "review__text";
+    textSpan.textContent = truncated;
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "review__toggle";
+    toggle.textContent = "Show more";
+    toggle.setAttribute("aria-expanded", "false");
+
+    blockquote.appendChild(textSpan);
+    blockquote.appendChild(document.createTextNode(" "));
+    blockquote.appendChild(toggle);
+
+    toggle.addEventListener("click", () => {
+      textSpan.textContent = fullText;
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.hidden = true;
+    });
+  });
+}
+
 // Init
 setYear();
 initMobileMenu();
 initHeroVideoAudio();
+initReviewTruncation();

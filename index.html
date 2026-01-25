@@ -73,9 +73,8 @@
       <div class="container hero__grid">
         <div class="hero__content">
           <h1 class="hero__title">        
-              1 DAY ROOF INSTALLATIONS
-        <div></div>
-            <span class="hero__titleAccent">STARTING AT $89 MONTHLY</span>
+            GET YOUR INSTANT ESTIMATE BELOW<br>
+            <span class="hero__titleAccent">FINANCING FROM  $89 MONTHLY</span>
           </h1>
           <p class="hero__subtitle">
             Efficient inspections, expert installs, and clean job sites. 
@@ -101,18 +100,41 @@
                 <div class="grid">
                   <div>
                     <label class="label" for="material">Roof Type</label>
-                    <select id="material" class="input">
+                    <select id="material" class="input materialSelectNative" aria-hidden="true" tabindex="-1">
                       <option value="shingle" selected>Architectural Shingle</option>
                       <option value="metal">Metal</option>
                       <option value="tile">Tile</option>
                     </select>
+                    <div class="materialSelect" data-select="material">
+                      <button class="materialSelect__trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Roof Type" aria-controls="material-listbox">
+                        <span class="materialSelect__triggerInner">
+                          <img class="materialSelect__triggerImg" src="images/Arch-Shingles.jpeg" alt="" loading="lazy" />
+                          <span class="materialSelect__triggerText">Architectural Shingle</span>
+                        </span>
+                        <span class="materialSelect__chevron" aria-hidden="true">v</span>
+                      </button>
+                      <div class="materialSelect__menu" role="listbox" id="material-listbox">
+                        <button class="materialSelect__option" type="button" role="option" data-value="shingle" aria-selected="true">
+                          <img class="materialSelect__optionImg" src="images/Arch Shingle.jpeg" alt="" loading="lazy" />
+                          <span class="materialSelect__optionText">Architectural Shingle</span>
+                        </button>
+                        <button class="materialSelect__option" type="button" role="option" data-value="metal" aria-selected="false">
+                          <img class="materialSelect__optionImg" src="images/Metal Roof 05.jpeg" alt="" loading="lazy" />
+                          <span class="materialSelect__optionText">Metal</span>
+                        </button>
+                        <button class="materialSelect__option" type="button" role="option" data-value="tile" aria-selected="false">
+                          <img class="materialSelect__optionImg" src="images/Tile Roof.jpeg" alt="" loading="lazy" />
+                          <span class="materialSelect__optionText">Tile</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
                   <div>
                     <label class="label" for="pitch">Roof Pitch</label>
-                    <select id="pitch" class="input">
-                      <option value="low">Low (3/12–4/12)</option>
-                      <option value="medium" selected>Medium (5/12–7/12)</option>
+                    <select id="pitch" class="input input--tall">
+                      <option value="low" selected>Low (3/12–4/12)</option>
+                      <option value="medium">Medium (5/12–7/12)</option>
                       <option value="steep">Steep (8/12+)</option>
                     </select>
                   </div>
@@ -121,7 +143,7 @@
                 <div class="grid">
                   <div>
                     <label class="label" for="stories">Stories</label>
-                    <select id="stories" class="input">
+                    <select id="stories" class="input input--tall">
                       <option value="1" selected>1 Story</option>
                       <option value="2">2 Story</option>
                       <option value="3">3+ Story</option>
@@ -130,7 +152,7 @@
 
                   <div>
                     <label class="label" for="complexity">Complexity</label>
-                    <select id="complexity" class="input">
+                    <select id="complexity" class="input input--tall">
                       <option value="simple" selected>Simple</option>
                       <option value="average">Average</option>
                       <option value="complex">Complex</option>
@@ -255,6 +277,77 @@
           </div>
 
 
+        </div>
+
+        <div class="hero__reviews" aria-label="Review templates">
+          <div class="reviewsGrid reviewsGrid--hero">
+            <figure class="review review--template">
+              <div class="review__source">
+                <img class="review__sourceIcon" src="https://www.google.com/favicon.ico" alt="Google" width="18" height="18" loading="lazy" />
+                <span class="review__sourceName">Google</span>
+              </div>
+              <div class="review__stars" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <blockquote>I am so very happy with my new roof, it looks so beautiful. The whole process from start to finish was seamless and stress free. Everyone was very professional and was available for any questioned I had. The workers started on time and finished in a very timely matter, cleaning up behind themselves. Liberty Roofing thank you so very much.</blockquote>
+              <figcaption>Carol Stewart - Columbus, GA</figcaption>
+            </figure>
+            <figure class="review review--template">
+              <div class="review__source">
+                <img class="review__sourceIcon" src="https://www.google.com/favicon.ico" alt="Google" width="18" height="18" loading="lazy" />
+                <span class="review__sourceName">Google</span>
+              </div>
+              <div class="review__stars" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <blockquote>They are an exceptional Columbus GA roofing company! I was looking a Columbus roofing company and sent them a message. They replied promptly. Their roofing work is outstanding. They have everything down to a science and get the job done efficiently and on time. I was surprised at how good they are at replacing an old roof or patching up and doing damage repair. Their associate on the phone even told me in advance that even if the job required more labor or materials they would not charge anything extra! That's incredible as most other Columbus roofing companies would charge for that. I'd highly recommend them for roofing in Columbus GA and surrounding areas. They even let me know they would travel to other locations for other houses (if I needed), such as going to Macon or Albany. So even if you're needing a Macon GA roofing company, I'd recommend them!</blockquote>
+              <figcaption>Sean Gallager - Columbus, GA</figcaption>
+            </figure>
+            <figure class="review review--template">
+              <div class="review__source">
+                <img class="review__sourceIcon" src="https://www.google.com/favicon.ico" alt="Google" width="18" height="18" loading="lazy" />
+                <span class="review__sourceName">Google</span>
+              </div>
+              <div class="review__stars" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <blockquote>Very professional job, great customer service and did an outstanding job! They were finished on time. Excellent Roofers!</blockquote>
+              <figcaption>Mindy Taylor - Columbus, GA</figcaption>
+            </figure>
+            <figure class="review review--template">
+              <div class="review__source">
+                <img class="review__sourceIcon" src="https://www.google.com/favicon.ico" alt="Google" width="18" height="18" loading="lazy" />
+                <span class="review__sourceName">Google</span>
+              </div>
+              <div class="review__stars" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <blockquote>Very please with the outcome of my new roof. Thank you for your excellent staff and also, I appreciate that it only took one day. Wow. I will recommend your company to others. Thanks again..</blockquote>
+              <figcaption>Delores White - Columbus, GA</figcaption>
+            </figure>
+            <figure class="review review--template">
+              <div class="review__source">
+                <img class="review__sourceIcon" src="https://www.google.com/favicon.ico" alt="Google" width="18" height="18" loading="lazy" />
+                <span class="review__sourceName">Google</span>
+              </div>
+              <div class="review__stars" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <blockquote>Dealing with Liberty Roofing has been a very positive experience for me. From the beginning of our conversation. They have been very professional and courteous. Also very informative about the whole roofing process. Especially very informative about financing the project. Very easy to work with to get your roofing project done.. I recommend them.</blockquote>
+              <figcaption>Tony Webb - Columbus, GA</figcaption>
+            </figure>
+            <figure class="review review--template">
+              <div class="review__source">
+                <img class="review__sourceIcon" src="https://www.google.com/favicon.ico" alt="Google" width="18" height="18" loading="lazy" />
+                <span class="review__sourceName">Google</span>
+              </div>
+              <div class="review__stars" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <blockquote>Liberty roofing professionals offered exceptional and frankly knowledgeable service, and didnt leave me uninvolved in the process of rebuilding my home. From the moment I reached out and connected with their staff to when they pulled out of my drive way I felt confident in the work being done. Thank you liberty roofing!</blockquote>
+              <figcaption>Olivia Jones - Columbus, GA</figcaption>
+            </figure>
+          </div>
         </div>
         
       </div>
