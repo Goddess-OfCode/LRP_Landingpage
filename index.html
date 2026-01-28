@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=1" />
 </head>
 <body>
   
@@ -81,8 +81,8 @@
           </p>
           <div class="formCard" id="lead-form" aria-label="Lead generation form">
             <div class="formCard__head">
-              <h3>Request My Estimate</h3>
-              <p>We respond fast. Because that’s kind of the whole point.</p>
+              <h3>Get Your Instant Estimate</h3>
+              <p>Fast & Hassle Free</p>
             </div>
             <div class="estimate">
               <div class="steps">
@@ -111,7 +111,7 @@
                           <img class="materialSelect__triggerImg" src="images/Arch-Shingles.jpeg" alt="" loading="lazy" />
                           <span class="materialSelect__triggerText">Architectural Shingle</span>
                         </span>
-                        <span class="materialSelect__chevron" aria-hidden="true">v</span>
+                        <span class="materialSelect__chevron" aria-hidden="true"></span>
                       </button>
                       <div class="materialSelect__menu" role="listbox" id="material-listbox">
                         <button class="materialSelect__option" type="button" role="option" data-value="shingle" aria-selected="true">
@@ -198,6 +198,7 @@
                   <input type="hidden" id="fs_squares" name="estimated_squares" />
                   <input type="hidden" id="fs_low" name="estimated_low" />
                   <input type="hidden" id="fs_high" name="estimated_high" />
+                  <input type="hidden" id="fs_estimate_summary" name="estimate_summary" />
 
                   <input type="hidden" name="_subject" value="New Instant Roof Estimate Lead" />
 
@@ -406,8 +407,8 @@
     </footer>
   </main>
 
-  <script src="javascript.js"></script>
-  <script src="testjava.js"></script>
+  <script src="javascript.js?v=1"></script>
+  <script src="testjava.js?v=1"></script>
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3n_1z_EwlffsduasxoHpx1gwRIgkdao&libraries=places&callback=initAutocomplete"
     async

@@ -609,6 +609,16 @@ input, select, textarea{
   outline:none;
   transition: border-color .12s ease, box-shadow .12s ease;
 }
+select.input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='rgb(0,0,0)' fill-opacity='0.6' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 10px 6px;
+  padding-right: 40px;
+}
 .input--tall{
   min-height: 66px;
 }
@@ -739,8 +749,23 @@ textarea{ resize: vertical; }
   color: rgba(0,0,0,.78);
 }
 .materialSelect__chevron{
-  color: rgba(0,0,0,.6);
-  font-size: .9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  flex-shrink: 0;
+  line-height: 0;
+}
+.materialSelect__chevron::before{
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid rgba(0,0,0,.6);
 }
 .materialSelect__trigger:focus-visible{
   outline: 2px solid rgba(209,15,26,.4);

@@ -302,6 +302,10 @@ leadForm.addEventListener("submit", async (e) => {
     document.getElementById("fs_squares").value = String(est.squares.toFixed(1));
     document.getElementById("fs_low").value = String(Math.round(est.low));
     document.getElementById("fs_high").value = String(Math.round(est.high));
+    const summaryEl = document.getElementById("fs_estimate_summary");
+    if (summaryEl) {
+      summaryEl.value = `Address: ${address}\nEstimated range: $${formatMoney(est.low)} - $${formatMoney(est.high)}`;
+    }
 
     // Submit to Formspree without leaving the page
     const formData = new FormData(leadForm);
