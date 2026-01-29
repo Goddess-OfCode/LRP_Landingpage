@@ -13,6 +13,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '2112766245927466');
 fbq('track', 'PageView');
+fbq('track', 'Lead');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=2112766245927466&ev=PageView&noscript=1"
@@ -115,7 +116,7 @@ src="https://www.facebook.com/tr?id=2112766245927466&ev=PageView&noscript=1"
 
                 <div class="grid">
                   <div>
-                    <label class="label" for="material">Roof Type</label>
+                    <label class="label" for="material">Roof Type (Material)</label>
                     <select id="material" class="input materialSelectNative" aria-hidden="true" tabindex="-1">
                       <option value="shingle" selected>Architectural Shingle</option>
                       <option value="metal">Metal</option>
@@ -147,18 +148,18 @@ src="https://www.facebook.com/tr?id=2112766245927466&ev=PageView&noscript=1"
                   </div>
 
                   <div>
-                    <label class="label" for="pitch">Roof Pitch</label>
+                    <label class="label" for="pitch">Roof Pitch (Height)</label>
                     <select id="pitch" class="input input--tall">
-                      <option value="low" selected>Low (3/12–4/12)</option>
-                      <option value="medium">Medium (5/12–7/12)</option>
-                      <option value="steep">Steep (8/12+)</option>
+                      <option value="low" selected>Low </option>
+                      <option value="medium">Medium</option>
+                      <option value="steep">Steep </option>
                     </select>
                   </div>
                 </div>
 
                 <div class="grid">
                   <div>
-                    <label class="label" for="stories">Stories</label>
+                    <label class="label" for="stories">Stories (Levels)</label>
                     <select id="stories" class="input input--tall">
                       <option value="1" selected>1 Story</option>
                       <option value="2">2 Story</option>
@@ -169,9 +170,9 @@ src="https://www.facebook.com/tr?id=2112766245927466&ev=PageView&noscript=1"
                   <div>
                     <label class="label" for="complexity">Complexity</label>
                     <select id="complexity" class="input input--tall">
-                      <option value="simple" selected>Simple</option>
-                      <option value="average">Average</option>
-                      <option value="complex">Complex</option>
+                      <option value="simple" selected>Simple (Single-Slope,Two-Sided)</option>
+                      <option value="average">Average (Chimney)</option>
+                      <option value="complex">Complex (Many Features)</option>
                     </select>
                   </div>
                 </div>
