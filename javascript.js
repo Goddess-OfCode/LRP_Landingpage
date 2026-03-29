@@ -245,9 +245,16 @@ function initReviewTruncation() {
     blockquote.appendChild(toggle);
 
     toggle.addEventListener("click", () => {
-      textSpan.textContent = fullText;
-      toggle.setAttribute("aria-expanded", "true");
-      toggle.hidden = true;
+      const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+      if (isExpanded) {
+        textSpan.textContent = truncated;
+        toggle.textContent = "Show more";
+        toggle.setAttribute("aria-expanded", "false");
+      } else {
+        textSpan.textContent = fullText;
+        toggle.textContent = "Show less";
+        toggle.setAttribute("aria-expanded", "true");
+      }
     });
   });
 }

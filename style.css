@@ -483,6 +483,8 @@ img{ max-width:100%; display:block; }
   padding: 18px;
   background: var(--white);
   box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
 }
 .review__source{
   display:flex;
@@ -526,6 +528,11 @@ img{ max-width:100%; display:block; }
   margin:0 0 12px;
   font-weight: 700;
   color: rgba(0,0,0,.82);
+  flex: 1;
+  max-height: 120px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,.2) transparent;
 }
 .review figcaption{
   color: rgba(0,0,0,.64);
